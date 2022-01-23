@@ -107,7 +107,7 @@ main {
 .outerWrapper {
     position: relative;
     top: -100px;
-    padding: 0 30px;
+    margin: 0 10px;
 }
 
 .todos {
@@ -122,6 +122,7 @@ main {
     cursor: pointer;
 
     display: grid;
+    column-gap: 1rem;
     place-content: center;
     grid-template:
         'check todo cross' 1fr
@@ -226,11 +227,21 @@ main {
     display: grid;
     column-gap: 3rem;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: 'items filter clear';
 }
 
 .statusbar > * {
     justify-self: center;
     align-self: center;
+}
+
+.items {
+    grid-area: items;
+}
+
+.filter {
+    grid-area: filter;
 }
 
 .filter span:nth-child(2) {
@@ -247,6 +258,7 @@ main {
 }
 
 .clear {
+    grid-area: clear;
     cursor: pointer;
 }
 
@@ -372,11 +384,38 @@ body.dark,
         background-size: 100%;
     }
 
+    .outerWrapper {
+        width: 90vw;
+        top: -120px;
+    }
+
     .mainlayout.dark header {
         background-image: url('./images/bg-mobile-dark.jpg');
     }
 
     .mainlayout.light header {
         background-image: url('./images/bg-mobile-light.jpg');
+    }
+
+    .filter {
+        display: none;
+    }
+
+    .filter.mobile {
+        display: block !important;
+        font-size: 0.95rem;
+        margin-top: 25px;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .mainlayout.light .filter.mobile {
+        background-color: var(--light-todoBG);
+        color: var(--light-miscFG);
+    }
+
+    .mainlayout.dark .filter.mobile {
+        background-color: var(--dark-todoBG);
+        color: var(--dark-miscFG);
     }
 }

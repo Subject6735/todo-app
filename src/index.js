@@ -312,7 +312,7 @@ class Main extends React.Component {
                             })}
                         </ul>
                         <div className="statusbar">
-                            <div>
+                            <div className="items">
                                 {this.state.completed.filter((e) => !e).length}{' '}
                                 {this.state.completed.filter((e) => !e).length === 1 ? 'item' : 'items'} left
                             </div>
@@ -331,6 +331,17 @@ class Main extends React.Component {
                                 Clear Completed
                             </div>
                         </div>
+                    </div>
+                    <div className="filter mobile" style={{display: 'none'}}>
+                        <span className={this.state.displayAll ? 'active' : ''} onClick={() => this.displayAll()}>
+                            All
+                        </span>
+                        <span className={this.state.displayActive ? 'active' : ''} onClick={() => this.displayActive()}>
+                            Active
+                        </span>
+                        <span className={this.state.displayCompleted ? 'active' : ''} onClick={() => this.displayCompleted()}>
+                            Completed
+                        </span>
                     </div>
                     <div className="dragNDropInfo">Drag and drop to reorder list</div>
                 </div>
