@@ -213,26 +213,6 @@ class Main extends React.Component {
 
     handleDragEnd(e) {
         e.target.classList.remove('dragging');
-
-        const todoTexts = [...document.querySelectorAll('.todo')].map((t) => t.innerHTML);
-        const todosCompleted = [...document.querySelectorAll('.todoItem')].map((e) => (e.classList.contains('completed') ? true : false));
-
-        this.setState(
-            (state) => {
-                return {
-                    todos: todoTexts,
-                    completed: todosCompleted,
-                    displayCross: Array(state.displayCross.length).fill(false),
-
-                    filteredTodos: todoTexts,
-                    filteredCompleted: todosCompleted,
-                };
-            },
-            () => {
-                this.setFilter();
-                localStorage.setItem('todoData', JSON.stringify(this.state));
-            }
-        );
     }
 
     handleDragOver(e) {

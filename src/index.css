@@ -269,7 +269,7 @@ main {
 
 footer {
     padding-bottom: 20px;
-    display: none;
+    /* display: none; */
 }
 
 .attribution {
@@ -329,6 +329,12 @@ body.dark,
 
 .mainlayout.dark .todos li.completed > div:nth-child(2) {
     color: var(--dark-completedFG);
+}
+
+.mainlayout.light .addTodo,
+.mainlayout.light .addTodo input {
+    background-color: var(--light-todoBG);
+    color: var(--light-mainFG);
 }
 
 .mainlayout.dark .addTodo,
