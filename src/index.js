@@ -194,6 +194,12 @@ class Main extends React.Component {
         } else return;
     }
 
+    arrayMove(arr, fromIndex, toIndex) {
+        let element = arr[fromIndex];
+        arr.splice(fromIndex, 1);
+        arr.splice(toIndex, 0, element);
+    }
+
     handleLoad() {
         const data = localStorage.getItem('todoData');
         if (data) {
@@ -205,34 +211,28 @@ class Main extends React.Component {
         e.target.classList.add('dragging');
     }
 
-    handleDragEnd(e, i) {
-        /*const current = e.target.querySelector('.todo').innerHTML;
-        const next = e.target.nextElementSibling.querySelector('.todo').innerHTML;
+    handleDragEnd(e) {
+        e.target.classList.remove('dragging');
 
-        const updatedTodos = this.state.todos;
-        const index = updatedTodos.findIndex((e) => e === next);
+        const todoTexts = [...document.querySelectorAll('.todo')].map((t) => t.innerHTML);
+        const todosCompleted = [...document.querySelectorAll('.todoItem')].map((e) => (e.classList.contains('completed') ? true : false));
 
-        updatedTodos.splice(i, 1);
-        updatedTodos.splice(index, 0, current);*/
-
-        /*this.setState(
+        this.setState(
             (state) => {
                 return {
-                    todos: updatedTodos,
-                    completed: state.completed,
-                    displayCross: state.displayCross,
+                    todos: todoTexts,
+                    completed: todosCompleted,
+                    displayCross: Array(state.displayCross.length).fill(false),
 
-                    filteredTodos: state.filteredTodos,
-                    filteredCompleted: state.filteredCompleted,
+                    filteredTodos: todoTexts,
+                    filteredCompleted: todosCompleted,
                 };
             },
             () => {
                 this.setFilter();
                 localStorage.setItem('todoData', JSON.stringify(this.state));
             }
-        );*/
-
-        e.target.classList.remove('dragging');
+        );
     }
 
     handleDragOver(e) {
@@ -284,7 +284,7 @@ class Main extends React.Component {
                     </div>
                     <div className="todos">
                         <ul className="todoList">
-                            {this.state.filteredTodos.map((name, i) => {
+                            {this.state.filteredTodos.map((todo, i) => {
                                 return (
                                     <li
                                         key={i}
@@ -292,12 +292,12 @@ class Main extends React.Component {
                                         onMouseOver={() => this.toggleCross(i, true)}
                                         onMouseOut={() => this.toggleCross(i, false)}
                                         onDragStart={(e) => this.handleDragStart(e)}
-                                        onDragEnd={(e) => this.handleDragEnd(e, i)}
+                                        onDragEnd={(e) => this.handleDragEnd(e)}
                                         onDragOver={(e) => this.handleDragOver(e)}
                                         draggable="true"
                                     >
                                         <div className="checkCircle" onClick={() => this.toggleCheck(i)}></div>
-                                        <div className="todo">{name}</div>
+                                        <div className="todo">{todo}</div>
                                         <img
                                             src={crossImg}
                                             alt="cross"

@@ -199,12 +199,6 @@ main {
 
 .checkCircle:hover {
     border: 1px solid var(--bright-blue);
-    /*
-    border-radius: 100vh;
-    border-width: 1px;
-    border-image-slice: 1;
-    border-image-source: var(--check-bg);
-    */
 }
 
 .todo {
@@ -312,13 +306,13 @@ body.dark,
 .mainlayout.light .todos {
     background-color: var(--light-todoBG);
     color: var(--light-mainFG);
-    /* box-shadow: 0px 10px 5px 5px var(--light-mainFG); */
+    box-shadow: 0px 20px 50px 0px rgb(204, 204, 204);
 }
 
 .mainlayout.dark .todos {
     background-color: var(--dark-todoBG);
     color: var(--dark-mainFG);
-    /* box-shadow: 0px 10px 5px 5px var(--dark-mainFG); */
+    box-shadow: 0px 20px 50px 0px black;
 }
 
 .mainlayout.light .todos li {
