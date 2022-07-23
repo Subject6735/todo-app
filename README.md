@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Todo App](https://subject6735.github.io/todo-app/)
+- Live Site URL: [Todo App](https://mdeme01.github.io/todo-app/)
 
 ## My process
 
@@ -39,4 +39,4 @@ Users should be able to:
 
 ## Author
 
-- Frontend Mentor - [@Subject6735](https://www.frontendmentor.io/profile/Subject6735)
+- Frontend Mentor - [@mdeme01](https://www.frontendmentor.io/profile/mdeme01)
